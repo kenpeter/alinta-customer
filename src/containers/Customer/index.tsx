@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/interface-name-prefix */
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
+import { bindActionCreators } from 'redux';
 import { loadCustomerAPI } from '../../reducers/customer';
 
 // all the states
@@ -24,7 +24,7 @@ class Customer extends React.Component<IProps> {
   }
 
   public render() {
-    return <div>bla4</div>;
+    return <div>customer</div>;
   }
 }
 
