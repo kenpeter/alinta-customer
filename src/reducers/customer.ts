@@ -56,7 +56,7 @@ export interface ILoadCustomerSuccess {
   customer: ICustomer;
 }
 
-export const getAllCharacters: ActionCreator<
+export const getAllCustomers: ActionCreator<
   ThunkAction<Promise<any>, ICustomerState, null, ILoadCustomerSuccess>
 > = () => {
   return async (dispatch: Dispatch) => {
@@ -64,7 +64,7 @@ export const getAllCharacters: ActionCreator<
       const response = await axios.get('https://swapi.co/api/people/');
       dispatch({
         characters: response.data.results,
-        type: CustomerActionTypes.LOAD_CUSTOMER_SUCCESS,
+        type: CustomerActionTypes.LOAD_CUSTOMER_SUCCESS
       });
     } catch (err) {
       console.error(err);
