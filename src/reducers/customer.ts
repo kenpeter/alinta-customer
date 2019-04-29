@@ -56,7 +56,7 @@ export interface ILoadCustomerSuccess {
   customer: ICustomer;
 }
 
-export const getAllCustomers: ActionCreator<
+export const loadCustomerAPI: ActionCreator<
   ThunkAction<Promise<any>, ICustomerState, null, ILoadCustomerSuccess>
 > = () => {
   return async (dispatch: Dispatch) => {
@@ -66,6 +66,10 @@ export const getAllCustomers: ActionCreator<
         characters: response.data.results,
         type: CustomerActionTypes.LOAD_CUSTOMER_SUCCESS
       });
+
+      //test
+      console.log(response);
+
     } catch (err) {
       console.error(err);
     }

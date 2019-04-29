@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/interface-name-prefix */
 import * as React from 'react';
 import { Provider } from 'react-redux';
-//import { Store } from 'redux';
+import { default as Customer } from './containers/Customer';
 
 import configureStore from './store';
 
@@ -13,7 +13,7 @@ class App extends React.Component {
   public render() {
     return (
       <Provider store={store}>
-        <div>bla</div>
+        <Customer />
       </Provider>
     );
   }
