@@ -1,12 +1,14 @@
-import React from 'react';
+import * as React from 'react';
 import './App.css';
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      test
-    </div>
-  );
+class App extends React.Component {
+  public render() {
+    return (
+      <div>
+        <div>bla</div>
+      </div>
+    );
+  }
 }
 
 export default App;
