@@ -4,7 +4,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { createCustomerAPI } from '../../reducers/createCustomer';
-import styled from 'styled-components';
+import { DeTable, DeTd, DeButton, DeTr } from '../../ui/ui';
 
 interface IProps {
   createCustomerAPIProps: any;
@@ -101,35 +101,6 @@ class CreateCustomer extends React.Component<IProps, IState> {
     );
   }
 }
-
-const DeTable = styled.table`
-  border-collapse: collapse;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  padding: 20px;
-`;
-
-const DeTr = styled.tr`
-  border: 1px solid #ccc;
-  padding: 20px;
-`;
-
-const DeTd = styled.td`
-  border: 1px solid #ccc;
-  padding: 20px;
-`;
-
-const DeButton = styled.button`
-  background-color: #4caf50; /* Green */
-  border: none;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-`;
 
 const mapStateToProps = () => {
   return {};

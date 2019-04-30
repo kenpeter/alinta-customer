@@ -4,7 +4,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { loadCustomerAPI } from '../../reducers/customer';
-import styled from 'styled-components';
+import { DeButton } from '../../ui/ui';
 
 interface IProps {
   searchCustomerAPIProps: any;
@@ -51,17 +51,6 @@ class Search extends React.Component<IProps, IState> {
     );
   }
 }
-
-const DeButton = styled.button`
-  background-color: #4caf50; /* Green */
-  border: none;
-  color: white;
-  padding: 5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 13px;
-`;
 
 const mapStateToProps = () => {
   return {};

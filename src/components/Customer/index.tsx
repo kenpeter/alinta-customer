@@ -4,7 +4,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Search from '../../containers/Search';
-import styled from 'styled-components';
+import { DeTable, DeTd, DeTh, DeTr } from '../../ui/ui';
 
 interface IProps {
   data: any;
@@ -70,28 +70,5 @@ export const Customer: React.FC<IProps> = ({ data, deleteCustomer }) => (
     <Link to="/create-customer">Create new customer</Link>
   </div>
 );
-
-const DeTable = styled.table`
-  border-collapse: collapse;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  padding: 20px;
-`;
-
-const DeTr = styled.tr`
-  border: 1px solid #ccc;
-  padding: 20px;
-`;
-
-const DeTd = styled.td`
-  border: 1px solid #ccc;
-  padding: 20px;
-`;
-
-const DeTh = styled.th`
-  border: 1px solid #ccc;
-  padding: 20px;
-`;
 
 export default Customer;
