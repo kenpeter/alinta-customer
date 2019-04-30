@@ -14,7 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', routes.customerHome);
+app.get('/api/search-customer/:searchText?', routes.searchCustomer);
 app.post('/api/create-customer', routes.createCustomer);
 app.post('/api/edit-customer/:id', routes.editCustomer);
 app.get('/api/delete-customer/:id', routes.deleteCustomer);

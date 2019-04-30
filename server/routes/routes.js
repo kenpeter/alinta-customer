@@ -1,9 +1,28 @@
 const customerModel = require('../models/customer');
 
-exports.customerHome = function(req, res, next) {
-  customerModel.find((err, doc) => {
-    res.status(200).json(doc);
-  });
+exports.searchCustomer = function(req, res) {
+  const searchText = req.params.searchText;
+
+  console.log('here', searchText);
+
+  if (searchText === undefined || searchText.trim() === '') {
+    customerModel.find((err, doc) => {
+      res.status(200).json(doc);
+    });
+  } else {
+    customerModel.find(
+      //{ $or: [{ firstName: searchText }, { lastName: searchText }] },
+      {
+        $or: [
+          { firstName: { $regex: searchText, $options: 'i' } },
+          { lastName: { $regex: searchText, $options: 'i' } }
+        ]
+      },
+      (err, doc) => {
+        res.status(200).json(doc);
+      }
+    );
+  }
 };
 
 exports.createCustomer = function(req, res, next) {

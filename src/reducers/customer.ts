@@ -50,10 +50,10 @@ export interface ILoadCustomerSuccess {
 
 export const loadCustomerAPI: ActionCreator<
   ThunkAction<Promise<any>, ICustomerState, null, ILoadCustomerSuccess>
-> = () => {
+> = (searchText: string) => {
   return async (dispatch: Dispatch) => {
     try {
-      const res = await getCustomers();
+      const res = await getCustomers(searchText);
       dispatch({
         customer: await res.json(),
         type: CustomerActionTypes.LOAD_CUSTOMER_SUCCESS

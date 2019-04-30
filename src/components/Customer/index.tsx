@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/interface-name-prefix */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Search from '../../containers/Search';
 
 interface IProps {
   data: any;
@@ -55,7 +56,9 @@ function buildLayout(data: any) {
 
 export const Customer: React.FC<IProps> = ({ data }) => (
   <div className="customer">
-    <div>search by name</div>
+    <div>
+      <Search />
+    </div>
     <div>
       <Link to="/create-customer">Create a customer</Link>
     </div>
