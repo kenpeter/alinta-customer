@@ -4,7 +4,8 @@
 // Import Reducer type
 import { Reducer, ActionCreator, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import axios from 'axios';
+import history from '../history';
+import { createCustomer } from '../api/customer';
 
 export enum CreateCustomerActionTypes {
   CREATE_CUSTOMER_SUCCESS = 'app/create_customer/CREATE_CUSTOMER_SUCCESS'
@@ -58,11 +59,11 @@ export const createCustomerAPI: ActionCreator<
 > = (item: any) => {
   return async (dispatch: Dispatch) => {
     try {
-      // api call
-      //const response = await axios.get('https://swapi.co/api/people/');
+      await createCustomer(item);
       dispatch({
         type: CreateCustomerActionTypes.CREATE_CUSTOMER_SUCCESS
       });
+      history.push('/home');
     } catch (err) {
       console.error(err);
     }
