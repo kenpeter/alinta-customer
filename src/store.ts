@@ -3,15 +3,21 @@
 import { applyMiddleware, combineReducers, createStore, Store } from 'redux';
 import thunk from 'redux-thunk';
 import { customerReducer, ICustomerState } from './reducers/customer';
+import {
+  createCustomerReducer,
+  ICreateCustomerState
+} from './reducers/createCustomer';
 
 // more state
 export interface IAppState {
   customerState: ICustomerState;
+  createCustomerState: ICreateCustomerState;
 }
 
-// more real values
+// Use data type, instead of reducer name
 const rootReducer = combineReducers<IAppState>({
-  customerState: customerReducer
+  customerState: customerReducer,
+  createCustomerState: createCustomerReducer
 });
 
 // Create a configure store function of type `IAppState`

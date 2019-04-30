@@ -11,7 +11,6 @@ import { IAppState } from '../../store';
 // data type
 import { ICustomer } from '../../reducers/customer';
 
-// interface
 interface IProps {
   loadCustomerAPIProps: any;
   customer: ICustomer;
@@ -28,7 +27,6 @@ class Customer extends React.Component<IProps> {
   }
 }
 
-// Grab the characters from the store and make them available on props
 const mapStateToProps = (store: IAppState) => {
   return {
     customer: store.customerState.customer
