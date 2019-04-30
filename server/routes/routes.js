@@ -3,9 +3,11 @@ const customerModel = require('../models/customer');
 exports.searchCustomer = function(req, res) {
   const searchText = req.params.searchText;
 
-  console.log('here', searchText);
-
-  if (searchText === undefined || searchText.trim() === '') {
+  if (
+    searchText === undefined ||
+    searchText === 'undefined' ||
+    searchText.trim() === ''
+  ) {
     customerModel.find((err, doc) => {
       res.status(200).json(doc);
     });

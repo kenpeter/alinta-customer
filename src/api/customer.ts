@@ -1,9 +1,11 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-undef */
 import Config from '../config.json';
 
 export const getCustomers = (searchText: string) => {
-  /* eslint-disable no-undef */
-  return fetch(`${Config.customerUrl}/api/search-customer/${searchText}`, {
+  const url = `${Config.customerUrl}/api/search-customer/${searchText}`;
+  return fetch(url, {
     method: 'GET'
   });
 };

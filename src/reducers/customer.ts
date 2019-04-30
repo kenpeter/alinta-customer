@@ -54,8 +54,13 @@ export const loadCustomerAPI: ActionCreator<
   return async (dispatch: Dispatch) => {
     try {
       const res = await getCustomers(searchText);
+      const json = await res.json();
+
+      //test
+      console.log('res', searchText, json);
+
       dispatch({
-        customer: await res.json(),
+        customer: json,
         type: CustomerActionTypes.LOAD_CUSTOMER_SUCCESS
       });
     } catch (err) {
