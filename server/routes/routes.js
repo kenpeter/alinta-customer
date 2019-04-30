@@ -36,7 +36,10 @@ exports.createCustomer = function(req, res, next) {
 };
 
 exports.editCustomer = function(req, res) {
-  let query = { _id: req.params.id };
+  let query = { _id: req.body._id };
+
+  console.log(query, req.body);
+
   customerModel.findOneAndUpdate(
     query,
     req.body,

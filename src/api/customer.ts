@@ -29,3 +29,16 @@ export const createCustomer = (item: any) => {
     body
   });
 };
+
+export const editCustomer = (item: any) => {
+  const body = `_id=${item._id}&firstName=${item.firstName}&lastName=${
+    item.lastName
+  }&dob=${item.dob}`;
+  return fetch(`${Config.customerUrl}/api/edit-customer`, {
+    method: 'POST',
+    headers: new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded' // Specifying the Content-Type
+    }),
+    body
+  });
+};

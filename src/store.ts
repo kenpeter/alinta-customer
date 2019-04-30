@@ -7,17 +7,23 @@ import {
   createCustomerReducer,
   ICreateCustomerState
 } from './reducers/createCustomer';
+import {
+  editCustomerReducer,
+  IEditCustomerState
+} from './reducers/editCustomer';
 
 // more state
 export interface IAppState {
   customerState: ICustomerState;
   createCustomerState: ICreateCustomerState;
+  editCustomerState: IEditCustomerState;
 }
 
 // Use data type, instead of reducer name
 const rootReducer = combineReducers<IAppState>({
   customerState: customerReducer,
-  createCustomerState: createCustomerReducer
+  createCustomerState: createCustomerReducer,
+  editCustomerState: editCustomerReducer
 });
 
 // Create a configure store function of type `IAppState`

@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/search-customer/:searchText?', routes.searchCustomer);
 app.post('/api/create-customer', routes.createCustomer);
-app.post('/api/edit-customer/:id', routes.editCustomer);
+app.post('/api/edit-customer', routes.editCustomer);
 app.get('/api/delete-customer/:id', routes.deleteCustomer);
 
 const server = app.listen(8000, function() {
