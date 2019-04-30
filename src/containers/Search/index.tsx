@@ -38,7 +38,13 @@ class Search extends React.Component<IProps, IState> {
           />
         </div>
         <div>
-          <button>Search</button>
+          <button
+            onClick={() =>
+              this.props.searchCustomerAPIProps(this.state.searchText)
+            }
+          >
+            Search
+          </button>
         </div>
       </div>
     );
