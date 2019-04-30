@@ -16,12 +16,12 @@ interface IProps {
 function buildLayout(data: any, deleteCustomer: any) {
   const res = data.map((item: any, index: number) => {
     return (
-      <tr key={index}>
-        <td>{index}</td>
+      <DeTr key={index}>
+        <DeTd>{index}</DeTd>
 
-        <td>{item.firstName + ' ' + item.lastName}</td>
+        <DeTd>{item.firstName + ' ' + item.lastName}</DeTd>
 
-        <td>
+        <DeTd>
           <Link
             to={{
               pathname: '/edit-customer',
@@ -44,8 +44,8 @@ function buildLayout(data: any, deleteCustomer: any) {
           >
             Delete
           </a>
-        </td>
-      </tr>
+        </DeTd>
+      </DeTr>
     );
   });
 
@@ -58,23 +58,40 @@ export const Customer: React.FC<IProps> = ({ data, deleteCustomer }) => (
       <Search />
       <Link to="/create-customer">Create</Link>
     </div>
-    <table>
+    <DeTable>
       <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Action</th>
-        </tr>
+        <DeTr>
+          <DeTh>ID</DeTh>
+          <DeTh>Name</DeTh>
+          <DeTh>Action</DeTh>
+        </DeTr>
       </thead>
       <tbody>{buildLayout(data, deleteCustomer)}</tbody>
-    </table>
+    </DeTable>
   </div>
 );
 
-const DecoCustomer = styled(Customer).table`
+const DeTable = styled.table`
   border-collapse: collapse;
   margin-top: 20px;
   margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
 `;
 
-export default DecoCustomer;
+const DeTr = styled.tr`
+  border: 1px solid #ccc;
+  padding: 20px;
+`;
+
+const DeTd = styled.td`
+  border: 1px solid #ccc;
+  padding: 20px;
+`;
+
+const DeTh = styled.th`
+  border: 1px solid #ccc;
+  padding: 20px;
+`;
+
+export default Customer;
