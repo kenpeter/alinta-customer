@@ -58,9 +58,6 @@ export const createCustomerAPI: ActionCreator<
 > = (item: any) => {
   return async (dispatch: Dispatch) => {
     try {
-
-      console.log('item', item);
-
       // api call
       //const response = await axios.get('https://swapi.co/api/people/');
       dispatch({
