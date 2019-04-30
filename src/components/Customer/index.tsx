@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/interface-name-prefix */
 import React from 'react';
@@ -25,7 +26,7 @@ function buildLayout(data: any) {
               }
             }}
           >
-            {item.firstName + item.lastName}
+            {item.firstName + ' ' + item.lastName}
           </Link>
         </td>
 
@@ -54,6 +55,7 @@ function buildLayout(data: any) {
 
 export const Customer: React.FC<IProps> = ({ data }) => (
   <div className="customer">
+    <div>search by name</div>
     <div>
       <Link to="/create-customer">Create a customer</Link>
     </div>

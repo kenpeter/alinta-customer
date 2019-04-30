@@ -4,7 +4,8 @@
 // Import Reducer type
 import { Reducer, ActionCreator, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import axios from 'axios';
+//import axios from 'axios';
+import { getCustomers } from '../api/customer';
 
 export enum CustomerActionTypes {
   LOAD_CUSTOMER_SUCCESS = 'app/customer/LOAD_CUSTOMER_SUCCESS'
@@ -12,25 +13,19 @@ export enum CustomerActionTypes {
 
 // data type
 export interface ICustomer {
-  data: [];
-  loading: false;
-  isError: false;
-  errors: '';
+  firstName: string;
+  lastName: string;
+  dob: string;
 }
 
-// obj (with data type)
+// many data
 export interface ICustomerState {
-  customer: ICustomer;
+  customer: ICustomer[];
 }
 
-// init state
+// above has shape
 const initialCustomerState: ICustomerState = {
-  customer: {
-    data: [],
-    loading: false,
-    isError: false,
-    errors: ''
-  }
+  customer: []
 };
 
 export const customerReducer: Reducer<ICustomerState> = (
@@ -41,10 +36,7 @@ export const customerReducer: Reducer<ICustomerState> = (
     case CustomerActionTypes.LOAD_CUSTOMER_SUCCESS:
       return {
         ...state,
-        data: action.data,
-        loading: false,
-        isError: false,
-        errors: ''
+        customer: action.customer
       };
     default:
       return state;
@@ -53,7 +45,7 @@ export const customerReducer: Reducer<ICustomerState> = (
 
 export interface ILoadCustomerSuccess {
   type: CustomerActionTypes.LOAD_CUSTOMER_SUCCESS;
-  customer: ICustomer;
+  customer: ICustomer[];
 }
 
 export const loadCustomerAPI: ActionCreator<
@@ -61,15 +53,11 @@ export const loadCustomerAPI: ActionCreator<
 > = () => {
   return async (dispatch: Dispatch) => {
     try {
-      const response = await axios.get('https://swapi.co/api/people/');
+      const res = await getCustomers();
       dispatch({
-        characters: response.data.results,
+        customer: await res.json(),
         type: CustomerActionTypes.LOAD_CUSTOMER_SUCCESS
       });
-
-      //test
-      console.log(response);
-
     } catch (err) {
       console.error(err);
     }
