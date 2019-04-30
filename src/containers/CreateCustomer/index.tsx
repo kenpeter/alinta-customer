@@ -4,7 +4,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { createCustomerAPI } from '../../reducers/createCustomer';
-import './index.css';
 import styled from 'styled-components';
 
 interface IProps {

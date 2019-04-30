@@ -4,7 +4,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Search from '../../containers/Search';
-//import './index.css';
 import styled from 'styled-components';
 
 interface IProps {
@@ -56,7 +55,6 @@ export const Customer: React.FC<IProps> = ({ data, deleteCustomer }) => (
   <div className="container customer">
     <div className="top-bar">
       <Search />
-      <Link to="/create-customer">Create</Link>
     </div>
     <DeTable>
       <thead>
@@ -68,6 +66,8 @@ export const Customer: React.FC<IProps> = ({ data, deleteCustomer }) => (
       </thead>
       <tbody>{buildLayout(data, deleteCustomer)}</tbody>
     </DeTable>
+
+    <Link to="/create-customer">Create new customer</Link>
   </div>
 );
 

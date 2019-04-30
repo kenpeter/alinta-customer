@@ -4,6 +4,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { editCustomerAPI } from '../../reducers/editCustomer';
+import styled from 'styled-components';
 
 interface IProps {
   location: any;
@@ -56,53 +57,85 @@ class EditCustomer extends React.Component<IProps, IState> {
   public render() {
     return (
       <div className="container editCustomer">
-        <h3>Edit customer</h3>
+        <h4>Create a new customer</h4>
 
-        <div className="field">
-          <label>First name</label>
-          <p>
-            <input
-              name="firstName"
-              value={this.state.firstName || ''}
-              onChange={this.handleFirstNameChange.bind(this)}
-            />
-          </p>
-        </div>
+        <DeTable>
+          <tbody>
+            <DeTr>
+              <DeTd>
+                <h5>First name</h5>
+              </DeTd>
+              <DeTd>
+                <input
+                  name="firstName"
+                  value={this.state.firstName || ''}
+                  onChange={this.handleFirstNameChange.bind(this)}
+                />
+              </DeTd>
+            </DeTr>
 
-        <div className="field">
-          <label>Last name</label>
-          <p>
-            <input
-              name="lastName"
-              value={this.state.lastName || ''}
-              onChange={this.handleLastNameChange.bind(this)}
-            />
-          </p>
-        </div>
+            <DeTr>
+              <DeTd>
+                <h5>Last name</h5>
+              </DeTd>
+              <DeTd>
+                <input
+                  name="lastName"
+                  value={this.state.lastName || ''}
+                  onChange={this.handleLastNameChange.bind(this)}
+                />
+              </DeTd>
+            </DeTr>
 
-        <div className="field">
-          <label>Date of birth</label>
-          <p>
-            <input
-              name="dob"
-              value={this.state.dob || ''}
-              onChange={this.handleDobChange.bind(this)}
-            />
-          </p>
-        </div>
+            <DeTr>
+              <DeTd>
+                <h5>Date of birth</h5>
+              </DeTd>
+              <DeTd>
+                <input
+                  name="dob"
+                  value={this.state.dob || ''}
+                  onChange={this.handleDobChange.bind(this)}
+                />
+              </DeTd>
+            </DeTr>
+          </tbody>
+        </DeTable>
 
-        <div>
-          <button
-            className="btn btn-primary"
-            onClick={this.editCustomer.bind(this)}
-          >
-            Update
-          </button>
-        </div>
+        <DeButton onClick={this.editCustomer.bind(this)}>Update</DeButton>
       </div>
     );
   }
 }
+
+const DeTable = styled.table`
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
+`;
+
+const DeTr = styled.tr`
+  border: 1px solid #ccc;
+  padding: 20px;
+`;
+
+const DeTd = styled.td`
+  border: 1px solid #ccc;
+  padding: 20px;
+`;
+
+const DeButton = styled.button`
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+`;
 
 const mapStateToProps = () => {
   return {};
