@@ -4,7 +4,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Search from '../../containers/Search';
-import './index.css';
+//import './index.css';
+import styled from 'styled-components';
 
 interface IProps {
   data: any;
@@ -70,4 +71,10 @@ export const Customer: React.FC<IProps> = ({ data, deleteCustomer }) => (
   </div>
 );
 
-export default Customer;
+const DecoCustomer = styled(Customer).table`
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-bottom: 20px;
+`;
+
+export default DecoCustomer;
