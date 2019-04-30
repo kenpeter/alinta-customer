@@ -4,6 +4,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { loadCustomerAPI } from '../../reducers/customer';
+import './index.css';
 
 interface IProps {
   searchCustomerAPIProps: any;
@@ -29,15 +30,15 @@ class Search extends React.Component<IProps, IState> {
 
   public render() {
     return (
-      <div className="container search">
-        <div>
+      <div className="search">
+        <span>
           <input
             type="text"
             value={this.state.searchText || ''}
             onChange={this.handleSearchTextChange.bind(this)}
           />
-        </div>
-        <div>
+        </span>
+        <span>
           <button
             onClick={() =>
               this.props.searchCustomerAPIProps(this.state.searchText)
@@ -45,7 +46,7 @@ class Search extends React.Component<IProps, IState> {
           >
             Search
           </button>
-        </div>
+        </span>
       </div>
     );
   }

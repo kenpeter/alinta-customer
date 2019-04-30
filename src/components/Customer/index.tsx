@@ -4,6 +4,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Search from '../../containers/Search';
+import './index.css';
 
 interface IProps {
   data: any;
@@ -17,20 +18,7 @@ function buildLayout(data: any, deleteCustomer: any) {
       <tr key={index}>
         <td>{index}</td>
 
-        <td>
-          <Link
-            to={{
-              pathname: '/single-customer',
-              data: {
-                firstName: item.firstName,
-                lastName: item.lastName,
-                dob: item.dob
-              }
-            }}
-          >
-            {item.firstName + ' ' + item.lastName}
-          </Link>
-        </td>
+        <td>{item.firstName + ' ' + item.lastName}</td>
 
         <td>
           <Link
@@ -64,12 +52,10 @@ function buildLayout(data: any, deleteCustomer: any) {
 }
 
 export const Customer: React.FC<IProps> = ({ data, deleteCustomer }) => (
-  <div className="customer">
-    <div>
+  <div className="container customer">
+    <div className="top-bar">
       <Search />
-    </div>
-    <div>
-      <Link to="/create-customer">Create a customer</Link>
+      <Link to="/create-customer">Create</Link>
     </div>
     <table>
       <thead>
