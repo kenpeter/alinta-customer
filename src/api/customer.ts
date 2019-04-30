@@ -10,6 +10,13 @@ export const getCustomers = (searchText: string) => {
   });
 };
 
+export const deleteCustomer = (id: string) => {
+  const url = `${Config.customerUrl}/api/delete-customer/${id}`;
+  return fetch(url, {
+    method: 'GET'
+  });
+};
+
 export const createCustomer = (item: any) => {
   const body = `firstName=${item.firstName}&lastName=${item.lastName}&dob=${
     item.dob

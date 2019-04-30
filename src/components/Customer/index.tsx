@@ -7,10 +7,11 @@ import Search from '../../containers/Search';
 
 interface IProps {
   data: any;
+  deleteCustomer: (id: string) => void;
 }
 
 // define outside
-function buildLayout(data: any) {
+function buildLayout(data: any, deleteCustomer: any) {
   const res = data.map((item: any, index: number) => {
     return (
       <tr key={index}>
@@ -45,7 +46,15 @@ function buildLayout(data: any) {
           >
             Edit
           </Link>
-          , Delete
+          ,{' '}
+          <a
+            href="#"
+            onClick={() => {
+              deleteCustomer(item._id);
+            }}
+          >
+            Delete
+          </a>
         </td>
       </tr>
     );
@@ -54,7 +63,7 @@ function buildLayout(data: any) {
   return res;
 }
 
-export const Customer: React.FC<IProps> = ({ data }) => (
+export const Customer: React.FC<IProps> = ({ data, deleteCustomer }) => (
   <div className="customer">
     <div>
       <Search />
@@ -70,7 +79,7 @@ export const Customer: React.FC<IProps> = ({ data }) => (
           <th>Action</th>
         </tr>
       </thead>
-      <tbody>{buildLayout(data)}</tbody>
+      <tbody>{buildLayout(data, deleteCustomer)}</tbody>
     </table>
   </div>
 );

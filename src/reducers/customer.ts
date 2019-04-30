@@ -4,11 +4,12 @@
 // Import Reducer type
 import { Reducer, ActionCreator, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-//import axios from 'axios';
-import { getCustomers } from '../api/customer';
+import history from '../history';
+import { getCustomers, deleteCustomer } from '../api/customer';
 
 export enum CustomerActionTypes {
-  LOAD_CUSTOMER_SUCCESS = 'app/customer/LOAD_CUSTOMER_SUCCESS'
+  LOAD_CUSTOMER_SUCCESS = 'app/customer/LOAD_CUSTOMER_SUCCESS',
+  DELETE_CUSTOMER_SUCCESS = 'app/customer/DELETE_CUSTOMER_SUCCESS'
 }
 
 // data type
@@ -55,12 +56,36 @@ export const loadCustomerAPI: ActionCreator<
     try {
       const res = await getCustomers(searchText);
       const json = await res.json();
-
-      //test
-      console.log('res', searchText, json);
-
       dispatch({
         customer: json,
+        type: CustomerActionTypes.LOAD_CUSTOMER_SUCCESS
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+};
+
+export interface IDeleteCustomerSuccess {
+  type: CustomerActionTypes.DELETE_CUSTOMER_SUCCESS;
+}
+
+export const deleteCustomerAPI: ActionCreator<
+  ThunkAction<Promise<any>, null, null, IDeleteCustomerSuccess>
+> = (id: string) => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const res = await deleteCustomer(id);
+      const json = await res.json();
+      dispatch({
+        customer: json,
+        type: CustomerActionTypes.DELETE_CUSTOMER_SUCCESS
+      });
+
+      const res1 = await getCustomers('');
+      const json1 = await res1.json();
+      dispatch({
+        customer: json1,
         type: CustomerActionTypes.LOAD_CUSTOMER_SUCCESS
       });
     } catch (err) {

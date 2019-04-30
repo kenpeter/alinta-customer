@@ -5,7 +5,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { default as CustomerComponent } from '../../components/Customer';
-import { loadCustomerAPI } from '../../reducers/customer';
+import { loadCustomerAPI, deleteCustomerAPI } from '../../reducers/customer';
 
 // all the states
 import { IAppState } from '../../store';
@@ -14,6 +14,7 @@ import { ICustomer } from '../../reducers/customer';
 
 interface IProps {
   loadCustomerAPIProps: any;
+  deleteCustomerAPIProps: any;
   customer: ICustomer[];
 }
 
@@ -23,6 +24,10 @@ class Customer extends React.Component<IProps> {
     loadCustomerAPIProps();
   }
 
+  public deleteCustomer = (id: string) => {
+    this.props.deleteCustomerAPIProps(id);
+  };
+
   public render() {
     const { customer } = this.props;
 
@@ -31,7 +36,10 @@ class Customer extends React.Component<IProps> {
         {customer.length === 0 ? (
           <p>Loading....</p>
         ) : (
-          <CustomerComponent data={customer} />
+          <CustomerComponent
+            data={customer}
+            deleteCustomer={this.deleteCustomer}
+          />
         )}
       </div>
     );
@@ -47,7 +55,8 @@ const mapStateToProps = (store: IAppState) => {
 const mapDispatchToProps = (dispatch: any) =>
   bindActionCreators(
     {
-      loadCustomerAPIProps: loadCustomerAPI
+      loadCustomerAPIProps: loadCustomerAPI,
+      deleteCustomerAPIProps: deleteCustomerAPI
     },
     dispatch
   );
