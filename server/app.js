@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', routes.customerHome);
 app.post('/api/create-customer', routes.createCustomer);
 app.post('/api/edit-customer/:id', routes.editCustomer);
+app.get('/api/delete-customer/:id', routes.deleteCustomer);
 
 const server = app.listen(8000, function() {
   console.log('app running on port.', server.address().port);

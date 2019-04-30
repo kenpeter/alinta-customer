@@ -26,3 +26,12 @@ exports.editCustomer = function(req, res) {
     }
   );
 };
+
+exports.deleteCustomer = function(req, res) {
+  let query = { _id: req.params.id };
+
+  customerModel.findByIdAndRemove(query, err => {
+    if (err) return res.send(500, { error: err });
+    return res.send({ delete: 'success' });
+  });
+};

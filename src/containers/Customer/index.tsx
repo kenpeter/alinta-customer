@@ -4,6 +4,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { default as CustomerComponent } from '../../components/Customer';
 import { loadCustomerAPI } from '../../reducers/customer';
 
 // all the states
@@ -23,7 +24,7 @@ class Customer extends React.Component<IProps> {
   }
 
   public render() {
-    return <div>customer</div>;
+    return <CustomerComponent data={null} />;
   }
 }
 
