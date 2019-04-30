@@ -4,6 +4,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { createCustomerAPI } from '../../reducers/createCustomer';
+import './index.css';
 
 interface IProps {
   createCustomerAPIProps: any;
@@ -50,40 +51,48 @@ class CreateCustomer extends React.Component<IProps, IState> {
   public render() {
     return (
       <div className="container createCustomer">
-        <h3>Create a new customer</h3>
+        <h4>Create a new customer</h4>
 
-        <div className="field">
-          <label>First name</label>
-          <p>
-            <input
-              name="firstName"
-              value={this.state.firstName || ''}
-              onChange={this.handleFirstNameChange.bind(this)}
-            />
-          </p>
-        </div>
+        <table>
+          <tr>
+            <td>
+              <h5>First name</h5>
+            </td>
+            <td>
+              <input
+                name="firstName"
+                value={this.state.firstName || ''}
+                onChange={this.handleFirstNameChange.bind(this)}
+              />
+            </td>
+          </tr>
 
-        <div className="field">
-          <label>Last name</label>
-          <p>
-            <input
-              name="lastName"
-              value={this.state.lastName || ''}
-              onChange={this.handleLastNameChange.bind(this)}
-            />
-          </p>
-        </div>
+          <tr>
+            <td>
+              <h5>Last name</h5>
+            </td>
+            <td>
+              <input
+                name="lastName"
+                value={this.state.lastName || ''}
+                onChange={this.handleLastNameChange.bind(this)}
+              />
+            </td>
+          </tr>
 
-        <div className="field">
-          <label>Date of birth</label>
-          <p>
-            <input
-              name="dob"
-              value={this.state.dob || ''}
-              onChange={this.handleDobChange.bind(this)}
-            />
-          </p>
-        </div>
+          <tr>
+            <td>
+              <h5>Date of birth</h5>
+            </td>
+            <td>
+              <input
+                name="dob"
+                value={this.state.dob || ''}
+                onChange={this.handleDobChange.bind(this)}
+              />
+            </td>
+          </tr>
+        </table>
 
         <div>
           <button

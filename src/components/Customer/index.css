@@ -1,17 +1,11 @@
 .top-bar {
   margin-top: 10px;
-
-  display: grid;
-  width: 400px;
-  flex-direction: row;
-  grid-template-columns: 150px;
-  align-items: start;
-  justify-content: space-between;
 }
 
 table {
   border-collapse: collapse;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 table, td, tr, th {
