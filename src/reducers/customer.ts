@@ -4,7 +4,6 @@
 // Import Reducer type
 import { Reducer, ActionCreator, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import history from '../history';
 import { getCustomers, deleteCustomer } from '../api/customer';
 
 export enum CustomerActionTypes {
