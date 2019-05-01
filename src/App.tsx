@@ -6,11 +6,8 @@ import history from './history';
 import { default as Customer } from './containers/Customer';
 import { default as EditCustomer } from './containers/EditCustomer';
 import { default as CreateCustomer } from './containers/CreateCustomer';
-
 import configureStore from './store';
-
 import './App.css';
-
 const store = configureStore();
 
 class App extends React.Component {
