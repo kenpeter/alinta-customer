@@ -27,9 +27,9 @@ export const DeButton = styled.button`
   background-color: #4caf50; /* Green */
   border: none;
   color: white;
-  padding: 10px;
+  padding: 4px 4px 5px 4px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 12px;
 `;
