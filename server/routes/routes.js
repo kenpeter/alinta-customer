@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const customerModel = require('../models/customer');
 
 exports.searchCustomer = function(req, res) {
@@ -13,7 +15,6 @@ exports.searchCustomer = function(req, res) {
     });
   } else {
     customerModel.find(
-      //{ $or: [{ firstName: searchText }, { lastName: searchText }] },
       {
         $or: [
           { firstName: { $regex: searchText, $options: 'i' } },
