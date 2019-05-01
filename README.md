@@ -11,7 +11,8 @@ launching the front end.
 
 * Hosted on github.
 * Repo is shared with recruiter.
-* Testing. `npm test` should run the test and pass them. There are basic tests for component rendering.
+* Testing. Run `npm test` should run the test for front end and pass them. These are basic tests for component rendering.
+* To test backend. Run `npm run test:server`. It simply test a route in express sserver.
 * Coding standard. Front end uses `linter` to stick to standard.
 * Design should be clean now.
 * Code should be easy to read and maintain now.
