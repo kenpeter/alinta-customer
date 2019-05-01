@@ -1,25 +1,28 @@
-var express = require('express'); // (npm install --save express)
-var request = require('supertest');
+const express = require('express'); // (npm install --save express)
+const request = require('supertest');
+const expect = require('chai').expect;
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const config = require('../config.json');
+global.db = global.db ? global.db : mongoose.createConnection(config.dbUrl);
+const routes = require('../routes/routes.js');
 var app;
 
 function createApp() {
   app = express();
-
-  var router = express.Router();
-  router.route('/').get(function(req, res) {
-    return res.json({ goodCall: true });
-  });
-
-  app.use(router);
+  app.use(cors());
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.get('/api/search-customer/:searchText?', routes.searchCustomer);
 
   return app;
 }
 
 describe('Our server', function() {
-  // Called once before any of the tests in this block begin.
   before(function(done) {
     app = createApp();
-    app.listen(function(err) {
+    app.listen(8000, function(err) {
       if (err) {
         return done(err);
       }
@@ -27,18 +30,17 @@ describe('Our server', function() {
     });
   });
 
-  it('should send back a JSON object with goodCall set to true', function() {
+  it('able to pull all customers', function(done) {
     request(app)
-      .get('/index')
+      .get('/api/search-customer')
       .set('Content-Type', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200, function(err, res) {
         if (err) {
           return done(err);
         }
-        const callStatus = res.body.goodCall;
-        expect(callStatus).to.equal(true);
-        // Done
+        const data = res.body;
+        expect(data.length).to.greaterThan(0);
         done();
       });
   });
